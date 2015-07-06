@@ -39,7 +39,7 @@
 
 (define-test test-backtick-form
     "backtick (`) form is much like single-quote (') form, except that subforms
-     preceded by a comma (,) are evaluated, rather then left as literals"
+     preceded by a comma (,) are evaluated, rather than left as literals"
   (let ((num 5)
         (word 'dolphin))
     (true-or-false? ___  (equal '(1 3 5) `(1 3 5)))
@@ -108,10 +108,10 @@
 
 (defvar *log* nil)
 
-(defmacro log-form (&body body)
+(defmacro log-form (form)
   "records the body form to the list *log* and then evalues the body normally"
-  `(let ((retval ,@body))
-     (push ',@body *log*)
+  `(let ((retval ,form))
+     (push ',form *log*)
      retval))
 
 (define-test test-basic-log-form
@@ -135,11 +135,11 @@
 (defvar *log-with-value* nil)
 
 ;; you must write this macro
-(defmacro log-form-with-value (&body body)
+(defmacro log-form-with-value (form)
   "records the body form, and the form's return value
    to the list *log-with-value* and then evalues the body normally"
   `(let ((logform nil)
-         (retval ,@body))
+         (retval ,form))
 
      ;; YOUR MACRO COMPLETION CODE GOES HERE.
 

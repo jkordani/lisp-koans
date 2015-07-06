@@ -31,8 +31,8 @@
   (let ((table-of-cube-roots (make-hash-table)))
 
   "assign the key-value pair 1->'uno'"
-  (setf (gethash 1 table-of-cube-roots) 1)
-  (assert-equal 1 (gethash 1 table-of-cube-roots))
+  (setf (gethash 1 table-of-cube-roots) "uno")
+  (assert-equal "uno" (gethash 1 table-of-cube-roots))
   (assert-equal 1 (hash-table-count table-of-cube-roots))
 
   (setf (gethash 8 table-of-cube-roots) 2)
@@ -89,10 +89,10 @@
           (expected (make-hash-table :test #'equal)))
       (setf (gethash "one" babel-fish) "uno")
       (setf (gethash "two" babel-fish) "dos")
-      (setf (gethash "one" expected) "ein")
+      (setf (gethash "one" expected) "eins")
       (setf (gethash "two" expected) "zwei")
 
-      (setf (gethash "one" babel-fish) "ein")
+      (setf (gethash "one" babel-fish) "eins")
       (setf (gethash "two" babel-fish) ____)
 
       (assert-true (equalp babel-fish expected))))
